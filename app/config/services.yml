@@ -1,0 +1,61 @@
+services:
+  interfaces:
+    App\Repository\AchatRepositoryInterface: App\Repository\AchatRepository
+    App\Repository\CompteurRepositoryInterface: App\Repository\CompteurRepository
+    App\Repository\TrancheRepositoryInterface: App\Repository\TrancheRepository
+  repositories:
+    App\Repository\CitoyenRepository:
+      class: App\Repository\CitoyenRepository
+      singleton: true
+    App\Repository\AchatRepository:
+      class: App\Repository\AchatRepository
+      singleton: true
+    App\Repository\CompteurRepository:
+      class: App\Repository\CompteurRepository
+      singleton: true
+    App\Repository\TrancheRepository:
+      class: App\Repository\TrancheRepository
+      singleton: true
+    App\Repository\LoggerRepository:
+      class: App\Repository\LoggerRepository
+      singleton: true
+  services:
+    App\Service\CitoyenService:
+      class: App\Service\CitoyenService
+      dependencies:
+        - App\Repository\CitoyenRepository
+        - App\Service\LoggerService
+      singleton: true
+    App\Service\AchatService:
+      class: App\Service\AchatService
+      dependencies:
+        - App\Repository\CompteurRepositoryInterface
+        - App\Repository\TrancheRepositoryInterface
+        - App\Repository\AchatRepositoryInterface
+      singleton: true
+    App\Service\LoggerService:
+      class: App\Service\LoggerService
+      dependencies:
+        - App\Repository\LoggerRepository
+      singleton: true
+  controllers:
+    App\Controller\CitoyenController:
+      class: App\Controller\CitoyenController
+      dependencies:
+        - App\Service\CitoyenService
+      singleton: true
+    App\Controller\AchatController:
+      class: App\Controller\AchatController
+      dependencies:
+        - App\Service\AchatService
+      singleton: true
+
+database:
+  host: ${DB_HOST:localhost}
+  port: ${DB_PORT:5433}
+  name: ${DB_NAME:pgdbDaf}
+  user: ${DB_USER:pguserDaf}
+  password: ${DB_PASSWORD:pgpassword}
+
+api:
+  base_url: ${API_BASE_URL:http://localhost:8081}

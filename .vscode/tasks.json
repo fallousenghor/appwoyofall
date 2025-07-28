@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Serveur PHP API",
+			"command": "php -S localhost:8081 -t public",
+			"group": "build",
+			"isBackground": true
+		}
+	]
+}
