@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-apache
 
 # Installer les extensions nécessaires
 RUN apt-get update \
@@ -9,4 +9,4 @@ RUN apt-get update \
 COPY . /var/www/html
 
 RUN chown -R www-data:www-data /var/www/html
-EXPOSE 9000
+EXPOSE 80
