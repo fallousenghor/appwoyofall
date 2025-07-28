@@ -1,12 +1,16 @@
-FROM php:8.2-apache
+FROM php:8.2-fpm
 
-# Installer les extensions nécessaires
-RUN apt-get update \
-    && apt-get install -y libpq-dev git unzip \
+# Installer les extensions nécessaires pour PostgreSQL
+RUN apt-get update && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo pdo_pgsql
 
-# Copier le code de l'application
-COPY . /var/www/html
+# Définir le répertoire de travail
+WORKDIR /var/www
 
-RUN chown -R www-data:www-data /var/www/html
-EXPOSE 80
+# Copier le code source dans le conteneur
+COPY . .
+
+# Donner les droits appropriés
+RUN chown -R www-data:www-data /var/www
+
+EXPOSE 9000
