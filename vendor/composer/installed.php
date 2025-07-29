@@ -3,7 +3,7 @@
         'name' => 'mapathe/appdaf',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd84b57dbac79c8d82184e8339645c2d1929b7f79',
+        'reference' => 'b389036eb419e6fa1b20a3b8bb01977a90606dff',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -67,7 +67,7 @@
         'mapathe/appdaf' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd84b57dbac79c8d82184e8339645c2d1929b7f79',
+            'reference' => 'b389036eb419e6fa1b20a3b8bb01977a90606dff',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
